@@ -42,7 +42,7 @@ export default function Navbar() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className={`
             relative pointer-events-auto max-w-[780px] w-[calc(100%-40px)] h-[50px]
-            rounded-full overflow-hidden glass-specular
+            rounded-full glass-specular
             flex items-center justify-between px-6
             transition-all duration-700 ease-[var(--ease-premium)]
             ${hasScrolled ? 'glass-ultra' : 'glass'}

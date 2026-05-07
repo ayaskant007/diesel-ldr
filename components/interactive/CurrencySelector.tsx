@@ -11,6 +11,7 @@ const CURRENCIES = [
   { code: 'JPY', symbol: '¥' },
   { code: 'AUD', symbol: 'A$' },
   { code: 'CAD', symbol: 'C$' },
+  { code: 'INR', symbol: '₹' },
 ];
 
 export function CurrencySelector() {
@@ -33,13 +34,15 @@ export function CurrencySelector() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  if (!isInitialized) return null;
-
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative z-[60]" ref={dropdownRef}>
       <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 text-[11px] font-[var(--font-display)] font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-300"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setIsOpen(!isOpen);
+        }}
+        className="flex items-center gap-1 text-[11px] font-[var(--font-display)] font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-300 py-1"
         aria-label="Select Currency"
       >
         <span>{activeCurrency.code}</span>
@@ -52,7 +55,7 @@ export function CurrencySelector() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute top-full right-0 mt-3 sm:mt-4 w-24 py-1 rounded-xl glass-ultra border border-white/5 overflow-hidden z-50 text-[10px] font-[var(--font-display)]"
+            className="absolute top-full right-0 mt-3 w-28 py-1.5 rounded-xl glass-ultra border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-[70] text-[10px] font-[var(--font-display)] pointer-events-auto"
           >
             {CURRENCIES.map((currency) => (
               <button
