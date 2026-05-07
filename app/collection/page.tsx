@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { products } from '@/lib/products';
 import { GlassCard } from '@/components/glass/GlassCard';
+import { useCurrencyStore, formatPrice } from '@/hooks/useCurrency';
 import { GlassBadge } from '@/components/glass/GlassBadge';
 import { GlassPanel } from '@/components/glass/GlassPanel';
 import { LiquidOrb } from '@/components/glass/LiquidOrb';
@@ -16,6 +17,8 @@ const categories: Category[] = ['ALL', 'LIPS', 'EYES', 'CHEEKS', 'GLOW', 'FRAGRA
 
 export default function CollectionPage() {
   const [activeFilter, setActiveFilter] = useState<Category>('ALL');
+  const currencyCode = useCurrencyStore((state) => state.currencyCode);
+  const exchangeRate = useCurrencyStore((state) => state.exchangeRate);
   const filtered = activeFilter === 'ALL' ? products : products.filter(p => p.category === activeFilter);
 
   return (
@@ -86,7 +89,7 @@ export default function CollectionPage() {
                     <div className="relative z-10">
                       <div className="flex items-center justify-between p-4 pb-0">
                         <p className="font-[var(--font-display)] font-semibold text-[10px] uppercase tracking-[0.15em] text-[var(--text-tertiary)]">{product.category}</p>
-                        <span className="font-[var(--font-display)] font-bold text-sm text-[var(--text-primary)]">£{product.price}</span>
+                        <span className="font-[var(--font-display)] font-bold text-sm text-[var(--text-primary)]">{formatPrice(product.price, currencyCode, exchangeRate)}</span>
                       </div>
                       <div className="relative h-[260px] overflow-hidden mx-3 mt-2 rounded-[16px]">
                         <Image src={product.images[0]} alt={product.name} fill className="object-cover transition-transform duration-900 ease-[var(--ease-premium)] group-hover:scale-[1.05]" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />

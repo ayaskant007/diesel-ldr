@@ -9,9 +9,12 @@ import { GlassPanel } from '@/components/glass/GlassPanel';
 import { GlassButton } from '@/components/glass/GlassButton';
 import { GlassBadge } from '@/components/glass/GlassBadge';
 import { LiquidOrb } from '@/components/glass/LiquidOrb';
+import { useCurrencyStore, formatPrice } from '@/hooks/useCurrency';
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, getCartTotal, getCartCount } = useCart();
+  const currencyCode = useCurrencyStore((state) => state.currencyCode);
+  const exchangeRate = useCurrencyStore((state) => state.exchangeRate);
 
   return (
     <div className="min-h-screen relative">
@@ -96,8 +99,8 @@ export default function CartPage() {
                           </button>
                         </div>
 
-                        <span className="font-[var(--font-display)] font-bold text-sm text-[var(--text-primary)] shrink-0 w-14 text-right">
-                          £{item.price * item.quantity}
+                        <span className="font-[var(--font-display)] font-bold text-sm text-[var(--text-primary)] shrink-0 w-max text-right">
+                          {formatPrice(item.price * item.quantity, currencyCode, exchangeRate)}
                         </span>
 
                         <button
@@ -118,7 +121,7 @@ export default function CartPage() {
               <div className="relative z-10 space-y-5">
                 <div className="flex justify-between items-baseline">
                   <span className="font-[var(--font-display)] font-bold text-sm uppercase tracking-[0.12em] text-[var(--text-primary)]">Subtotal</span>
-                  <span className="font-[var(--font-display)] font-extrabold text-2xl text-[var(--text-primary)]">£{getCartTotal()}</span>
+                  <span className="font-[var(--font-display)] font-extrabold text-2xl text-[var(--text-primary)]">{formatPrice(getCartTotal(), currencyCode, exchangeRate)}</span>
                 </div>
                 <p className="text-[11px] text-[var(--text-tertiary)]">Shipping calculated at checkout.</p>
                 <GlassButton fullWidth size="lg" variant="accent">PROCEED TO CHECKOUT</GlassButton>

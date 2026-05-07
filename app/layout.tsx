@@ -18,9 +18,11 @@ const oxanium = Oxanium({
   preload: true,
 });
 
+import { CurrencyInitializer } from "@/components/interactive/CurrencyInitializer";
+
 export const metadata: Metadata = {
   title: "Diesel × Lana Del Rey — Young and Beautiful",
-  description: "The Lived-In Look. Six pieces. One collab. A limited-edition makeup collection by Diesel and Lana Del Rey.",
+  description: "The Lived-In Look. 11 pieces. One collab. A limited-edition collection by Diesel and Lana Del Rey.",
 };
 
 export default function RootLayout({
@@ -31,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${oxanium.variable}`}>
       <body className="antialiased min-h-screen flex flex-col">
+        <CurrencyInitializer />
         <Navbar />
         <main id="main-content" className="flex-grow">
           {children}

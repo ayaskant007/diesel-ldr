@@ -9,6 +9,7 @@ import { GlassCard } from '@/components/glass/GlassCard';
 import { GlassBadge } from '@/components/glass/GlassBadge';
 import { LiquidOrb } from '@/components/glass/LiquidOrb';
 import ProductClientSection from './ProductClientSection';
+import { RelatedProductSection } from './RelatedSection';
 
 export async function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
@@ -100,29 +101,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           </div>
         </div>
 
-        {relatedProducts.length > 0 && (
-          <div className="mt-20 md:mt-28 border-t border-[var(--glass-border-dim)] pt-12 md:pt-14">
-            <p className="font-[var(--font-display)] font-bold text-[10px] tracking-[0.3em] uppercase text-[var(--accent-red)] mb-2 md:mb-3">RECOMMENDED</p>
-            <h2 className="font-[var(--font-display)] font-extrabold text-2xl md:text-3xl uppercase tracking-[0.06em] text-[var(--text-primary)] mb-8">YOU MAY ALSO LIKE</h2>
-            <div className="flex overflow-x-auto lg:grid lg:grid-cols-3 gap-5 pb-6 no-scrollbar">
-              {relatedProducts.map(related => (
-                <Link key={related.id} href={`/collection/${related.slug}`} className="min-w-[260px] lg:min-w-0 flex-shrink-0 group">
-                  <GlassCard orbColor={related.orbColor}>
-                    <div className="relative z-10">
-                      <div className="relative h-[180px] overflow-hidden mx-3 mt-3 rounded-[14px]">
-                        <Image src={related.images[0]} alt={related.name} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" sizes="33vw" />
-                      </div>
-                      <div className="p-4 flex justify-between items-center">
-                        <h3 className="font-[var(--font-display)] font-bold text-[var(--text-primary)] text-sm uppercase">{related.name}</h3>
-                        <span className="font-[var(--font-display)] font-bold text-[var(--text-primary)] text-sm">£{related.price}</span>
-                      </div>
-                    </div>
-                  </GlassCard>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
+        <RelatedProductSection products={relatedProducts} />
       </div>
     </div>
   );

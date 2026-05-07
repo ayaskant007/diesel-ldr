@@ -14,8 +14,12 @@ interface ClothingCardProps {
   index?: number;
 }
 
+import { useCurrencyStore, formatPrice } from '@/hooks/useCurrency';
+
 export function ClothingCard({ product, featured = false, index = 0 }: ClothingCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const currencyCode = useCurrencyStore((state) => state.currencyCode);
+  const exchangeRate = useCurrencyStore((state) => state.exchangeRate);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -62,7 +66,7 @@ export function ClothingCard({ product, featured = false, index = 0 }: ClothingC
                 {product.category}
               </p>
               <span className="font-[var(--font-display)] font-bold text-sm text-[var(--text-primary)]">
-                £{product.price}
+                {formatPrice(product.price, currencyCode, exchangeRate)}
               </span>
             </div>
 

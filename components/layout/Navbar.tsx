@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Menu, X } from 'lucide-react';
 import { useCart } from '@/hooks/useCart';
+import { CurrencySelector } from '@/components/interactive/CurrencySelector';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -77,6 +78,7 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-4 z-10">
+            <CurrencySelector />
             <Link href="/cart" className="relative text-[var(--text-primary)] hover:text-[var(--accent-red)] transition-colors duration-500">
               <ShoppingBag size={18} strokeWidth={1.5} />
               <AnimatePresence>

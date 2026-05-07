@@ -14,6 +14,7 @@ import { GlassBadge } from '@/components/glass/GlassBadge';
 import { GlassInput } from '@/components/glass/GlassInput';
 import { LiquidOrb } from '@/components/glass/LiquidOrb';
 import { ClothingCard } from '@/components/glass/ClothingCard';
+import { useCurrencyStore, formatPrice } from '@/hooks/useCurrency';
 
 const fadeUp = {
   initial: { opacity: 0, y: 28, filter: 'blur(6px)' },
@@ -31,6 +32,8 @@ const staggerContainer = {
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const lookbookRef = useRef<HTMLDivElement>(null);
+  const currencyCode = useCurrencyStore((state) => state.currencyCode);
+  const exchangeRate = useCurrencyStore((state) => state.exchangeRate);
   
   const { scrollY } = useScroll();
   const { scrollYProgress: lookbookProgress } = useScroll({
@@ -209,7 +212,7 @@ export default function Home() {
                     <div className="relative z-10">
                       <div className="flex items-center justify-between p-4 pb-0">
                         <p className="font-[var(--font-display)] font-semibold text-[10px] uppercase tracking-[0.15em] text-[var(--text-tertiary)]">{product.category}</p>
-                        <span className="font-[var(--font-display)] font-bold text-sm text-[var(--text-primary)]">£{product.price}</span>
+                        <span className="font-[var(--font-display)] font-bold text-sm text-[var(--text-primary)]">{formatPrice(product.price, currencyCode, exchangeRate)}</span>
                       </div>
                       <div className="relative h-[280px] overflow-hidden mx-3 mt-3 rounded-[14px]">
                         <Image src={product.images[0]} alt={product.name} fill className="object-cover transition-transform duration-900 ease-[var(--ease-premium)] group-hover:scale-[1.05]" sizes="(max-width: 768px) 100vw, 33vw" />

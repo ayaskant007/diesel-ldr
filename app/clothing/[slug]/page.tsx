@@ -11,6 +11,7 @@ import { GlassButton } from '@/components/glass/GlassButton';
 import { GlassBadge } from '@/components/glass/GlassBadge';
 import { LiquidOrb } from '@/components/glass/LiquidOrb';
 import { useCart } from '@/hooks/useCart';
+import { useCurrencyStore, formatPrice } from '@/hooks/useCurrency';
 
 export default function ClothingProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -18,6 +19,8 @@ export default function ClothingProductPage({ params }: { params: Promise<{ slug
   const addItem = useCart((state) => state.addItem);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [added, setAdded] = useState(false);
+  const currencyCode = useCurrencyStore((state) => state.currencyCode);
+  const exchangeRate = useCurrencyStore((state) => state.exchangeRate);
 
   if (!product) {
     return (
@@ -93,7 +96,7 @@ export default function ClothingProductPage({ params }: { params: Promise<{ slug
                 {product.name}
               </h1>
               <p className="font-[var(--font-display)] font-bold text-2xl text-[var(--accent-red)]">
-                £{product.price}
+                {formatPrice(product.price, currencyCode, exchangeRate)}
               </p>
             </div>
 

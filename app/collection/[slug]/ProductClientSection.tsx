@@ -6,10 +6,13 @@ import { Product } from '@/lib/products';
 import { useCart } from '@/hooks/useCart';
 import { GlassButton } from '@/components/glass/GlassButton';
 import { Check } from 'lucide-react';
+import { useCurrencyStore, formatPrice } from '@/hooks/useCurrency';
 
 export default function ProductClientSection({ product }: { product: Product }) {
   const addItem = useCart((state) => state.addItem);
   const [buttonState, setButtonState] = useState<'idle' | 'adding' | 'added'>('idle');
+  const currencyCode = useCurrencyStore((state) => state.currencyCode);
+  const exchangeRate = useCurrencyStore((state) => state.exchangeRate);
 
   const handleAddToBag = () => {
     setButtonState('adding');
@@ -33,7 +36,7 @@ export default function ProductClientSection({ product }: { product: Product }) 
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="font-[var(--font-display)] font-extrabold text-[38px] text-[var(--text-primary)]"
       >
-        £{product.price}
+        {formatPrice(product.price, currencyCode, exchangeRate)}
       </motion.p>
 
       <GlassButton
