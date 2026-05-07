@@ -1,17 +1,22 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Product } from '@/lib/products';
 
 export interface CartItem {
-  product: Product;
+  id: string;
+  name: string;
+  price: number;
+  image: string;
   quantity: number;
+  category?: string;
+  type: 'beauty' | 'clothing';
+  size?: string;
 }
 
 interface CartState {
   items: CartItem[];
-  addItem: (product: Product, quantity?: number) => void;
-  removeItem: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
+  addItem: (item: Omit<CartItem, 'quantity'>, quantity?: number) => void;
+  removeItem: (itemId: string) => void;
+  updateQuantity: (itemId: string, quantity: number) => void;
   clearCart: () => void;
   getCartTotal: () => number;
   getCartCount: () => number;
@@ -22,36 +27,41 @@ export const useCart = create<CartState>()(
     (set, get) => ({
       items: [],
       
-      addItem: (product, quantity = 1) => {
+      addItem: (item, quantity = 1) => {
         set((state) => {
-          const existingItem = state.items.find((item) => item.product.id === product.id);
+          const cartKey = item.size ? `${item.id}-${item.size}` : item.id;
+          const existingItem = state.items.find((i) => {
+            const existingKey = i.size ? `${i.id}-${i.size}` : i.id;
+            return existingKey === cartKey;
+          });
           if (existingItem) {
             return {
-              items: state.items.map((item) =>
-                item.product.id === product.id
-                  ? { ...item, quantity: item.quantity + quantity }
-                  : item
-              ),
+              items: state.items.map((i) => {
+                const existingKey = i.size ? `${i.id}-${i.size}` : i.id;
+                return existingKey === cartKey
+                  ? { ...i, quantity: i.quantity + quantity }
+                  : i;
+              }),
             };
           }
-          return { items: [...state.items, { product, quantity }] };
+          return { items: [...state.items, { ...item, quantity }] };
         });
       },
       
-      removeItem: (productId) => {
+      removeItem: (itemId) => {
         set((state) => ({
-          items: state.items.filter((item) => item.product.id !== productId),
+          items: state.items.filter((item) => item.id !== itemId),
         }));
       },
       
-      updateQuantity: (productId, quantity) => {
+      updateQuantity: (itemId, quantity) => {
         if (quantity <= 0) {
-          get().removeItem(productId);
+          get().removeItem(itemId);
           return;
         }
         set((state) => ({
           items: state.items.map((item) =>
-            item.product.id === productId ? { ...item, quantity } : item
+            item.id === itemId ? { ...item, quantity } : item
           ),
         }));
       },
@@ -59,7 +69,7 @@ export const useCart = create<CartState>()(
       clearCart: () => set({ items: [] }),
       
       getCartTotal: () => {
-        return get().items.reduce((total, item) => total + item.product.price * item.quantity, 0);
+        return get().items.reduce((total, item) => total + item.price * item.quantity, 0);
       },
       
       getCartCount: () => {
