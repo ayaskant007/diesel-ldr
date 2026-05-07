@@ -23,6 +23,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Collection', href: '/collection' },
+    { name: 'Clothing', href: '/clothing' },
     { name: 'Lookbook', href: '/lookbook' },
     { name: 'About', href: '/about' },
   ];
@@ -35,29 +36,29 @@ export default function Navbar() {
 
       <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 pointer-events-none">
         <motion.nav
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ y: -20, opacity: 0, filter: 'blur(4px)' }}
+          animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className={`
-            relative pointer-events-auto max-w-[720px] w-[calc(100%-40px)] h-[50px]
+            relative pointer-events-auto max-w-[780px] w-[calc(100%-40px)] h-[50px]
             rounded-full overflow-hidden glass-specular
             flex items-center justify-between px-6
-            transition-all duration-700 ease-[var(--ease-glass)]
+            transition-all duration-700 ease-[var(--ease-premium)]
             ${hasScrolled ? 'glass-ultra' : 'glass'}
           `}
           role="navigation"
           aria-label="Main navigation"
         >
-          <Link href="/" className="font-[var(--font-display)] font-extrabold text-[var(--text-primary)] text-[14px] tracking-[0.1em] uppercase hover:text-[var(--accent-red)] transition-colors duration-300 z-10 shrink-0">
+          <Link href="/" className="font-[var(--font-display)] font-extrabold text-[var(--text-primary)] text-[14px] tracking-[0.1em] uppercase hover:text-[var(--accent-red)] transition-colors duration-500 z-10 shrink-0">
             DIESEL × LDR
           </Link>
 
-          <div className="hidden md:flex items-center gap-6 lg:gap-7 z-10">
+          <div className="hidden md:flex items-center gap-5 lg:gap-6 z-10">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative font-[var(--font-display)] font-semibold text-[11px] tracking-[0.14em] uppercase transition-colors duration-300 ${pathname === link.href
+                className={`relative font-[var(--font-display)] font-semibold text-[11px] tracking-[0.14em] uppercase transition-colors duration-500 ease-[var(--ease-premium)] ${pathname === link.href
                     ? 'text-[var(--text-primary)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                   }`}
@@ -67,8 +68,8 @@ export default function Navbar() {
                   <motion.span
                     layoutId="navIndicator"
                     className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-[4px] h-[4px] rounded-full bg-[var(--accent-red)]"
-                    style={{ boxShadow: '0 0 8px rgba(229,56,42,0.5)' }}
-                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                    style={{ boxShadow: '0 0 10px rgba(255,59,47,0.6)' }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
                 )}
               </Link>
@@ -76,7 +77,7 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-4 z-10">
-            <Link href="/cart" className="relative text-[var(--text-primary)] hover:text-[var(--accent-red)] transition-colors duration-300">
+            <Link href="/cart" className="relative text-[var(--text-primary)] hover:text-[var(--accent-red)] transition-colors duration-500">
               <ShoppingBag size={18} strokeWidth={1.5} />
               <AnimatePresence>
                 {cartCount > 0 && (
@@ -84,8 +85,8 @@ export default function Navbar() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
-                    transition={{ type: 'spring', stiffness: 500, damping: 25 }}
-                    className="absolute -top-1.5 -right-2 flex h-[15px] w-[15px] items-center justify-center rounded-full bg-[var(--accent-red)] text-[7px] font-bold text-white"
+                    transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                    className="absolute -top-1.5 -right-2 flex h-[15px] w-[15px] items-center justify-center rounded-full bg-[var(--accent-red)] text-[7px] font-bold text-white shadow-[0_0_8px_rgba(255,59,47,0.4)]"
                   >
                     {cartCount}
                   </motion.span>
@@ -94,7 +95,7 @@ export default function Navbar() {
             </Link>
 
             <button
-              className="md:hidden text-[var(--text-primary)] hover:text-[var(--accent-red)] transition-colors"
+              className="md:hidden text-[var(--text-primary)] hover:text-[var(--accent-red)] transition-colors duration-300"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-expanded={isMobileMenuOpen}
               aria-label="Toggle menu"
@@ -108,23 +109,23 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 glass-ultra flex flex-col items-center justify-center"
+            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            animate={{ opacity: 1, backdropFilter: 'blur(40px)' }}
+            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-40 bg-[rgba(3,4,8,0.85)] flex flex-col items-center justify-center"
           >
             <nav className="flex flex-col items-center gap-8">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.06, duration: 0.4 }}
+                  initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ delay: i * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <Link
                     href={link.href}
-                    className={`font-[var(--font-display)] font-extrabold text-3xl uppercase tracking-[0.06em] transition-colors duration-300 ${pathname === link.href
+                    className={`font-[var(--font-display)] font-extrabold text-3xl uppercase tracking-[0.06em] transition-colors duration-500 ${pathname === link.href
                         ? 'text-[var(--accent-red)]'
                         : 'text-[var(--text-primary)] hover:text-[var(--accent-red)]'
                       }`}

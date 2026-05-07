@@ -37,32 +37,48 @@ export function GlassButton({
   const baseClass = cn(
     'relative overflow-hidden rounded-full glass-specular metal-edge',
     variant === 'accent'
-      ? 'bg-[var(--accent-red)] border border-[rgba(229,56,42,0.5)] shadow-[0_0_24px_rgba(229,56,42,0.2)]'
+      ? 'bg-[var(--accent-red)] border border-[rgba(255,59,47,0.6)] shadow-[0_0_28px_rgba(255,59,47,0.25)]'
       : 'glass',
     'font-[var(--font-display)] font-bold uppercase tracking-[0.12em]',
     'text-[var(--text-primary)] cursor-pointer select-none whitespace-nowrap',
-    'transition-all duration-300 ease-[var(--ease-glass)]',
+    'transition-all duration-500 ease-[var(--ease-premium)]',
     sizeMap[size],
     fullWidth && 'w-full text-center',
     disabled && 'opacity-40 pointer-events-none',
     className
   );
 
+  const shimmerOverlay = (
+    <span
+      className="absolute inset-0 z-[2] pointer-events-none overflow-hidden rounded-full"
+      aria-hidden="true"
+    >
+      <span
+        className="absolute top-0 -left-full w-[80%] h-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{
+          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
+          animation: 'btnShimmer 3s ease-in-out infinite',
+        }}
+      />
+    </span>
+  );
+
   const spring = {
     whileHover: {
-      scale: 1.03,
+      scale: 1.04,
       boxShadow: variant === 'accent'
-        ? '0 0 40px rgba(229,56,42,0.30), 0 8px 32px rgba(0,0,0,0.4)'
-        : '0 0 36px rgba(255,255,255,0.15), 0 8px 32px rgba(0,0,0,0.4)',
+        ? '0 0 48px rgba(255,59,47,0.35), 0 10px 36px rgba(0,0,0,0.45)'
+        : '0 0 42px rgba(255,255,255,0.18), 0 10px 36px rgba(0,0,0,0.45)',
     },
     whileTap: { scale: 0.97 },
-    transition: { type: 'spring' as const, stiffness: 400, damping: 25 },
+    transition: { type: 'spring' as const, stiffness: 250, damping: 30 },
   };
 
   if (href) {
     return (
-      <motion.div {...spring} className={cn('inline-block', fullWidth && 'w-full')}>
+      <motion.div {...spring} className={cn('inline-block group', fullWidth && 'w-full')}>
         <Link href={href} className={baseClass}>
+          {shimmerOverlay}
           <span className="relative z-[3]">{children}</span>
         </Link>
       </motion.div>
@@ -75,8 +91,9 @@ export function GlassButton({
       onClick={onClick}
       disabled={disabled}
       type={type}
-      className={baseClass}
+      className={cn(baseClass, 'group')}
     >
+      {shimmerOverlay}
       <span className="relative z-[3]">{children}</span>
     </motion.button>
   );

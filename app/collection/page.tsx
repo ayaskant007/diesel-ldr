@@ -9,6 +9,7 @@ import { GlassCard } from '@/components/glass/GlassCard';
 import { GlassBadge } from '@/components/glass/GlassBadge';
 import { GlassPanel } from '@/components/glass/GlassPanel';
 import { LiquidOrb } from '@/components/glass/LiquidOrb';
+import { Sparkles } from 'lucide-react';
 
 type Category = 'ALL' | 'LIPS' | 'EYES' | 'CHEEKS' | 'GLOW';
 const categories: Category[] = ['ALL', 'LIPS', 'EYES', 'CHEEKS', 'GLOW'];
@@ -19,17 +20,25 @@ export default function CollectionPage() {
 
   return (
     <div className="min-h-screen relative">
-      <LiquidOrb color="rgba(37,99,235,0.4)" size={600} className="top-[-150px] left-1/2 -translate-x-1/2" opacity={0.08} delay={0} />
+      <LiquidOrb color="rgba(37,99,235,0.4)" size={650} className="top-[-180px] left-1/2 -translate-x-1/2" opacity={0.08} delay={0} duration={16} />
+      <LiquidOrb color="rgba(229,56,42,0.3)" size={350} className="bottom-[30%] right-[-80px]" opacity={0.06} delay={4} duration={12} />
 
       <div className="pt-28 pb-10 px-6 max-w-[1400px] mx-auto relative z-10">
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <p className="font-[var(--font-display)] font-bold text-[11px] tracking-[0.3em] uppercase text-[var(--accent-red)] mb-3">LIMITED EDITION</p>
-          <h1 className="font-[var(--font-display)] font-extrabold text-[clamp(48px,9vw,110px)] uppercase text-[var(--text-primary)] leading-[0.95]">
+        <motion.div
+          initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="flex items-center gap-3 mb-3">
+            <Sparkles size={14} className="text-[var(--accent-red)]" />
+            <p className="font-[var(--font-display)] font-bold text-[11px] tracking-[0.3em] uppercase text-[var(--accent-red)]">LIMITED EDITION</p>
+          </div>
+          <h1 className="font-[var(--font-display)] font-extrabold text-[clamp(48px,9vw,110px)] uppercase text-[var(--text-primary)] leading-[0.93]">
             THE COLLECTION
           </h1>
-          <p className="text-[var(--text-secondary)] mt-3 text-sm">6 pieces. One collaboration.</p>
+          <p className="text-[var(--text-secondary)] mt-3 text-sm max-w-md">6 pieces. One collaboration. Objects that blur the line between beauty and art.</p>
         </motion.div>
-        <div className="mt-6 h-[1px] bg-[var(--glass-border-dim)]" />
+        <div className="mt-6 section-divider" />
       </div>
 
       <div className="sticky top-[68px] z-40 flex justify-center px-6 mb-10">
@@ -41,7 +50,7 @@ export default function CollectionPage() {
                 onClick={() => setActiveFilter(cat)}
                 role="radio"
                 aria-checked={activeFilter === cat}
-                className={`relative font-[var(--font-display)] font-semibold text-[10px] uppercase tracking-[0.12em] px-4 py-1.5 rounded-full transition-all duration-300 ${
+                className={`relative font-[var(--font-display)] font-semibold text-[10px] uppercase tracking-[0.12em] px-4 py-1.5 rounded-full transition-all duration-500 ease-[var(--ease-premium)] ${
                   activeFilter === cat ? 'text-white' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
@@ -49,8 +58,8 @@ export default function CollectionPage() {
                   <motion.span
                     layoutId="filterPill"
                     className="absolute inset-0 rounded-full bg-[var(--accent-red)]"
-                    style={{ boxShadow: '0 0 16px rgba(229,56,42,0.25)' }}
-                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                    style={{ boxShadow: '0 0 20px rgba(255,59,47,0.30)' }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
                 )}
                 <span className="relative z-10">{cat}</span>
@@ -63,14 +72,14 @@ export default function CollectionPage() {
       <div className="max-w-[1400px] mx-auto px-6 pb-28 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <AnimatePresence mode="popLayout">
-            {filtered.map((product) => (
+            {filtered.map((product, idx) => (
               <motion.div
                 key={product.id}
                 layout
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, scale: 0.96, filter: 'blur(4px)' }}
+                transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link href={`/collection/${product.slug}`} className="block group">
                   <GlassCard orbColor={product.orbColor}>
@@ -80,8 +89,8 @@ export default function CollectionPage() {
                         <span className="font-[var(--font-display)] font-bold text-sm text-[var(--text-primary)]">£{product.price}</span>
                       </div>
                       <div className="relative h-[260px] overflow-hidden mx-3 mt-2 rounded-[16px]">
-                        <Image src={product.images[0]} alt={product.name} fill className="object-cover transition-transform duration-700 ease-[var(--ease-glass)] group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                        <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[rgba(9,9,11,0.7)] to-transparent" />
+                        <Image src={product.images[0]} alt={product.name} fill className="object-cover transition-transform duration-900 ease-[var(--ease-premium)] group-hover:scale-[1.05]" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                        <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[rgba(3,4,8,0.75)] to-transparent" />
                       </div>
                       <div className="p-4 pt-3">
                         <h3 className="font-[var(--font-display)] font-bold text-[var(--text-primary)] text-sm uppercase tracking-[0.04em] mb-2">{product.name}</h3>

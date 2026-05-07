@@ -10,6 +10,7 @@ interface LiquidOrbProps {
   blendMode?: 'screen' | 'multiply';
   opacity?: number;
   blur?: number;
+  pulse?: boolean;
   style?: CSSProperties;
 }
 
@@ -22,6 +23,7 @@ export function LiquidOrb({
   blendMode = 'screen',
   opacity = 0.5,
   blur = 80,
+  pulse = false,
   style,
 }: LiquidOrbProps) {
   return (
@@ -30,11 +32,13 @@ export function LiquidOrb({
       style={{
         width: size,
         height: size,
-        background: color,
+        background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
         filter: `blur(${blur}px)`,
         opacity,
         mixBlendMode: blendMode,
-        animation: `float ${duration}s ease-in-out infinite`,
+        animation: pulse
+          ? `float ${duration}s ease-in-out infinite, pulseGlow ${duration * 0.6}s ease-in-out infinite`
+          : `float ${duration}s ease-in-out infinite`,
         animationDelay: `${delay}s`,
         ...style,
       }}

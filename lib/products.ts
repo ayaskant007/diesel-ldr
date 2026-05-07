@@ -97,3 +97,105 @@ export const products: Product[] = [
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find(p => p.slug === slug);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CLOTHING
+   ═══════════════════════════════════════════════════════════════════════ */
+
+export type ClothingCategory = 'TOPS' | 'OUTERWEAR' | 'DENIM' | 'BOTTOMS' | 'ACCESSORIES';
+
+export interface ClothingProduct {
+  id: string;
+  slug: string;
+  name: string;
+  category: ClothingCategory;
+  price: number;
+  description: string;
+  tagline: string;
+  images: string[];
+  orbColor: string;
+  sizes: string[];
+  featured?: boolean;
+}
+
+export const clothingProducts: ClothingProduct[] = [
+  {
+    id: 'c1', slug: 'young-beautiful-tee',
+    name: 'YOUNG & BEAUTIFUL OVERSIZED TEE', category: 'TOPS',
+    price: 85,
+    tagline: 'Wear the anthem.',
+    description: 'Heavyweight cotton oversized tee with distressed "YOUNG & BEAUTIFUL" print. Co-branded DIESEL × LDR back tag. Dropped shoulders, raw hem.',
+    images: ['/images/products/young-beautiful-tee.png'],
+    orbColor: '#8B8B8B', sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    featured: true,
+  },
+  {
+    id: 'c2', slug: 'ldr-denim-jacket',
+    name: 'LDR DENIM TRUCKER JACKET', category: 'OUTERWEAR',
+    price: 320,
+    tagline: 'Heritage, reimagined.',
+    description: 'Indigo washed trucker jacket with hand-distressed details, embroidered LDR crest on chest, and signature Diesel hardware. Lined interior with campaign print.',
+    images: ['/images/products/ldr-denim-jacket.png'],
+    orbColor: '#3A5A8C', sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    featured: true,
+  },
+  {
+    id: 'c3', slug: 'west-coast-jeans',
+    name: 'WEST COAST DISTRESSED JEANS', category: 'DENIM',
+    price: 260,
+    tagline: 'Miles on the highway, written in denim.',
+    description: 'Wide-leg distressed jeans in sun-faded indigo. Raw hem, ripped knees, brass rivets. The denim equivalent of a road trip.',
+    images: ['/images/products/west-coast-jeans.png'],
+    orbColor: '#4A6B8A', sizes: ['24', '26', '28', '30', '32', '34'],
+  },
+  {
+    id: 'c4', slug: 'venice-mesh-top',
+    name: 'VENICE BITCH MESH TOP', category: 'TOPS',
+    price: 120,
+    tagline: 'Sheer confidence.',
+    description: 'Black mesh long-sleeve top with subtle metallic thread running through. High neck. Fitted silhouette. Layering essential.',
+    images: ['/images/products/venice-mesh-top.png'],
+    orbColor: '#2A2A35', sizes: ['XS', 'S', 'M', 'L'],
+  },
+  {
+    id: 'c5', slug: 'art-deco-belt',
+    name: 'ART DECO CHAIN BELT', category: 'ACCESSORIES',
+    price: 180,
+    tagline: 'Ornament with weight.',
+    description: 'Heavy brass chain belt with Art Deco geometric links and vintage-finish clasp. Adjustable length. Statement hardware.',
+    images: ['/images/products/art-deco-belt.png'],
+    orbColor: '#C9A84C', sizes: ['S/M', 'M/L'],
+  },
+  {
+    id: 'c6', slug: 'summer-bummer-skirt',
+    name: 'SUMMER BUMMER MINI SKIRT', category: 'BOTTOMS',
+    price: 195,
+    tagline: 'Short, sharp, unapologetic.',
+    description: 'Distressed denim mini skirt with raw edge hem, vintage brass button fly, and faded patina. Cut high. Washed to feel lived-in.',
+    images: ['/images/products/summer-bummer-skirt.png'],
+    orbColor: '#7A8B9C', sizes: ['24', '26', '28', '30', '32'],
+  },
+  {
+    id: 'c7', slug: 'cherry-cola-leather',
+    name: 'CHERRY COLA LEATHER JACKET', category: 'OUTERWEAR',
+    price: 480,
+    tagline: 'The jacket that never leaves.',
+    description: 'Cherry red genuine leather biker jacket with asymmetric silver zip, quilted lining, and tonal DIESEL emboss on back yoke. Worn-in from day one.',
+    images: ['/images/products/cherry-cola-leather.jpg'],
+    orbColor: '#7A1F2E', sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    featured: true,
+  },
+  {
+    id: 'c8', slug: 'watercolour-scarf',
+    name: 'WATERCOLOUR EYES SILK SCARF', category: 'ACCESSORIES',
+    price: 145,
+    tagline: 'Art you wear.',
+    description: '100% silk twill scarf with watercolour abstract print in earthy tones. Hand-rolled edges. 90×90cm. Can be worn as headscarf, necktie, or bag accent.',
+    images: ['/images/products/watercolour-scarf.jpg'],
+    orbColor: '#9E7E4F', sizes: ['ONE SIZE'],
+  },
+];
+
+export function getClothingBySlug(slug: string): ClothingProduct | undefined {
+  return clothingProducts.find(p => p.slug === slug);
+}

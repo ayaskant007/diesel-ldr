@@ -9,6 +9,7 @@ interface GlassPanelProps {
   variant?: 'default' | 'heavy' | 'ultra' | 'accent';
   breathe?: boolean;
   prismatic?: boolean;
+  glow?: string;
   isHero?: boolean;
 }
 
@@ -25,6 +26,7 @@ export function GlassPanel({
   variant = 'default',
   breathe = false,
   prismatic = false,
+  glow,
 }: GlassPanelProps) {
   return (
     <div
@@ -39,6 +41,17 @@ export function GlassPanel({
         willChange: 'transform',
       } : undefined}
     >
+      {glow && (
+        <div
+          className="absolute inset-0 pointer-events-none -z-10"
+          style={{
+            background: `radial-gradient(ellipse 120% 80% at 50% 50%, ${glow}, transparent 70%)`,
+            opacity: 0.15,
+            filter: 'blur(40px)',
+          }}
+          aria-hidden="true"
+        />
+      )}
       {children}
     </div>
   );

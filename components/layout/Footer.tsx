@@ -5,10 +5,10 @@ import { GlassPanel } from '@/components/glass/GlassPanel';
 export default function Footer() {
   return (
     <footer className="relative mt-auto pt-1">
+      <div className="section-divider mx-6 mb-0" />
       <GlassPanel className="rounded-none px-4 sm:px-6 pt-12 sm:pt-16 pb-8">
         <div className="max-w-[1440px] mx-auto relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-12 sm:mb-16">
-            {/* Brand */}
             <div className="space-y-3">
               <h3 className="font-[var(--font-display)] font-extrabold text-2xl uppercase tracking-[0.1em] text-[var(--text-primary)]">
                 DIESEL × LDR
@@ -18,37 +18,35 @@ export default function Footer() {
               </p>
             </div>
 
-            {/* Explore */}
             <div className="space-y-3 flex flex-col">
               <h4 className="font-[var(--font-display)] font-bold text-[11px] uppercase tracking-[0.2em] text-[var(--accent-red)] mb-1">Explore</h4>
               {[
                 { name: 'Home', href: '/' },
                 { name: 'Collection', href: '/collection' },
+                { name: 'Clothing', href: '/clothing' },
                 { name: 'Lookbook', href: '/lookbook' },
                 { name: 'About', href: '/about' },
               ].map((link) => (
-                <Link key={link.name} href={link.href} className="font-[var(--font-display)] font-semibold text-sm uppercase tracking-[0.08em] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-200">
+                <Link key={link.name} href={link.href} className="font-[var(--font-display)] font-semibold text-sm uppercase tracking-[0.08em] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-400">
                   {link.name}
                 </Link>
               ))}
             </div>
 
-            {/* Information */}
             <div className="space-y-3 flex flex-col">
               <h4 className="font-[var(--font-display)] font-bold text-[11px] uppercase tracking-[0.2em] text-[var(--accent-red)] mb-1">Information</h4>
               {['Shipping Policy', 'Returns', 'Privacy Policy', 'Terms'].map((name) => (
-                <Link key={name} href="#" className="font-[var(--font-display)] font-semibold text-sm uppercase tracking-[0.08em] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-200">
+                <Link key={name} href="#" className="font-[var(--font-display)] font-semibold text-sm uppercase tracking-[0.08em] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-400">
                   {name}
                 </Link>
               ))}
             </div>
 
-            {/* Social */}
             <div className="space-y-4">
               <h4 className="font-[var(--font-display)] font-bold text-[11px] uppercase tracking-[0.2em] text-[var(--accent-red)] mb-1">Social</h4>
               <div className="flex gap-5">
                 {[Camera, MessageCircle, Video].map((Icon, i) => (
-                  <Link key={i} href="#" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-200" aria-label={['Instagram', 'Twitter', 'TikTok'][i]}>
+                  <Link key={i} href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-red)] transition-colors duration-400" aria-label={['Instagram', 'Twitter', 'TikTok'][i]}>
                     <Icon size={20} strokeWidth={1.5} />
                   </Link>
                 ))}
