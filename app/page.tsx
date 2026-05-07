@@ -44,30 +44,25 @@ export default function Home() {
       {/* ═══ HERO ═══ */}
       <section ref={heroRef} className="relative h-screen w-full overflow-hidden flex items-end justify-start">
         <motion.div style={{ y: parallaxY }} className="absolute inset-0 z-0 will-change-transform">
-          <Image src="/images/hero.png" alt="DIESEL × LDR Campaign" fill priority className="object-cover brightness-[0.4] contrast-[1.1]" sizes="100vw" />
-          <div className="absolute inset-0" style={{
-            background: `
-              radial-gradient(ellipse 50% 50% at 60% 30%, rgba(37,99,235,0.12) 0%, transparent 70%),
-              radial-gradient(ellipse 40% 50% at 30% 70%, rgba(229,56,42,0.08) 0%, transparent 60%),
-              linear-gradient(to top, var(--bg-void) 0%, transparent 50%)
-            `
-          }} />
+          <Image src="/images/hero.png" alt="DIESEL × LDR Campaign" fill priority className="object-cover brightness-[0.35] contrast-[1.2] saturate-[1.1]" sizes="100vw" />
+          <div className="absolute inset-0 hero-backdrop" />
+          <div className="absolute inset-0 hero-texture" />
         </motion.div>
 
         <LiquidOrb color="rgba(37,99,235,0.5)" size={500} className="top-[-60px] right-[-100px]" opacity={0.2} delay={0} duration={14} />
         <LiquidOrb color="rgba(229,56,42,0.4)" size={350} className="bottom-[-30px] left-[-60px]" opacity={0.15} delay={3} duration={11} />
 
-        <div className="relative z-10 p-6 md:p-12 pb-20 md:pb-28 w-full max-w-[640px]">
-          <GlassPanel variant="heavy" breathe prismatic className="rounded-[28px] p-10 md:p-14">
+        <div className="relative z-10 p-4 sm:p-6 md:p-12 pb-20 md:pb-28 w-full max-w-[640px]">
+          <GlassPanel variant="heavy" breathe prismatic className="rounded-[26px] p-8 sm:p-10 md:p-14 cut-panel">
             <div className="relative z-10">
               <p className="hero-eyebrow opacity-0 font-[var(--font-display)] font-bold text-[11px] tracking-[0.25em] uppercase text-[var(--accent-red)] mb-4">
                 DIESEL × LANA DEL REY
               </p>
-              <h1 className="mb-5">
-                <span className="hero-title-1 block opacity-0 font-[var(--font-display)] font-extrabold text-[clamp(50px,10vw,96px)] leading-[0.95] uppercase text-[var(--text-primary)]">
+              <h1 className="mb-5 break-words">
+                <span className="hero-title-1 block opacity-0 font-[var(--font-display)] font-extrabold text-[clamp(40px,8.5vw,76px)] leading-[0.95] uppercase text-[var(--text-primary)] tracking-tight">
                   YOUNG
                 </span>
-                <span className="hero-title-2 block opacity-0 font-[var(--font-display)] font-extrabold text-[clamp(50px,10vw,96px)] leading-[0.95] uppercase text-[var(--text-primary)]">
+                <span className="hero-title-2 block opacity-0 font-[var(--font-display)] font-extrabold text-[clamp(40px,8.5vw,76px)] leading-[0.95] uppercase text-[var(--text-primary)] tracking-tight">
                   AND BEAUTIFUL
                 </span>
               </h1>
@@ -89,8 +84,8 @@ export default function Home() {
       </section>
 
       {/* ═══ MARQUEE ═══ */}
-      <div className="relative z-20 -mt-5 mx-auto max-w-[840px] w-[calc(100%-48px)]">
-        <GlassPanel variant="ultra" className="rounded-full overflow-hidden py-3">
+      <div className="relative z-20 -mt-5 mx-auto max-w-[840px] px-4 w-full md:w-[calc(100%-48px)]">
+        <GlassPanel variant="ultra" className="rounded-full overflow-hidden py-3 metal-edge">
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-void)] via-transparent to-[var(--bg-void)] z-10 pointer-events-none" />
           <div className="flex whitespace-nowrap animate-[marquee_25s_linear_infinite] hover:[animation-play-state:paused] relative z-0">
             {[...Array(3)].map((_, i) => (
@@ -108,7 +103,7 @@ export default function Home() {
       </div>
 
       {/* ═══ COLLECTION TEASER ═══ */}
-      <section className="relative py-28 px-6 section-ambient">
+      <section className="relative py-20 md:py-28 px-4 sm:px-6 section-ambient">
         <LiquidOrb color="rgba(37,99,235,0.4)" size={450} className="top-[-80px] left-[-120px]" opacity={0.1} delay={0} />
 
         <div className="max-w-[1400px] mx-auto relative z-10">
@@ -122,7 +117,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 mb-10">
             {products.slice(0, 3).map((product, idx) => (
               <motion.div
                 key={product.id}
@@ -162,16 +157,16 @@ export default function Home() {
       </section>
 
       {/* ═══ STATEMENT ═══ */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-24 md:py-32 relative overflow-hidden">
         <LiquidOrb color="rgba(229,56,42,0.3)" size={200} className="left-[20%] top-[30%]" opacity={0.1} delay={0} />
         <LiquidOrb color="rgba(37,99,235,0.3)" size={180} className="right-[20%] bottom-[30%]" opacity={0.08} delay={2} />
 
-        <div className="max-w-[700px] mx-auto px-6 relative z-10">
+        <div className="max-w-[700px] mx-auto px-4 sm:px-6 relative z-10">
           <motion.div {...fadeUp}>
-            <GlassPanel variant="heavy" prismatic className="rounded-[28px] p-12 md:p-16 text-center">
+            <GlassPanel variant="heavy" prismatic className="rounded-[26px] p-8 sm:p-12 md:p-16 text-center cut-panel">
               <div className="relative z-10">
-                <div className="w-8 h-[2px] bg-[var(--accent-red)] mx-auto mb-10" />
-                <blockquote className="font-[var(--font-display)] font-extrabold text-[clamp(24px,4vw,42px)] uppercase text-[var(--text-primary)] leading-[1.2] mb-10">
+                <div className="w-8 h-[2px] bg-[var(--accent-red)] mx-auto mb-8 sm:mb-10" />
+                <blockquote className="font-[var(--font-display)] font-extrabold text-[clamp(22px,4vw,42px)] uppercase text-[var(--text-primary)] leading-[1.2] mb-8 sm:mb-10">
                   &quot;YOUNG AND BEAUTIFUL IS A WAY OF DRESSING.&quot;
                 </blockquote>
                 <cite className="font-[var(--font-display)] font-semibold text-[10px] uppercase tracking-[0.25em] text-[var(--text-tertiary)] not-italic">
@@ -184,17 +179,17 @@ export default function Home() {
       </section>
 
       {/* ═══ LOOKBOOK TEASER ═══ */}
-      <section className="py-28 relative overflow-hidden section-ambient">
+      <section className="py-20 md:py-28 px-4 sm:px-6 relative overflow-hidden section-ambient">
         <LiquidOrb color="rgba(37,99,235,0.4)" size={400} className="right-[-100px] top-[-60px]" opacity={0.1} delay={1} />
 
-        <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-[55%_45%] gap-12 items-center relative z-10">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[55%_45%] gap-8 md:gap-12 items-center relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.97 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
           >
-            <GlassPanel variant="heavy" prismatic className="rounded-[24px] overflow-hidden">
+            <GlassPanel variant="heavy" prismatic className="rounded-[22px] overflow-hidden cut-panel">
               <div className="relative aspect-[4/5] z-10">
                 <Image src="/images/hero.png" alt="Campaign editorial" fill className="object-cover brightness-[0.7] contrast-[1.05]" sizes="(max-width: 768px) 100vw, 55vw" />
               </div>
@@ -219,12 +214,12 @@ export default function Home() {
       </section>
 
       {/* ═══ NEWSLETTER ═══ */}
-      <section className="py-32 px-6 relative">
+      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
         <LiquidOrb color="rgba(37,99,235,0.3)" size={300} className="top-[25%] left-1/2 -translate-x-1/2" opacity={0.08} delay={0} />
 
         <div className="max-w-[520px] mx-auto relative z-10">
           <motion.div {...fadeUp}>
-            <GlassPanel variant="heavy" breathe prismatic className="rounded-[28px] p-10 md:p-14 text-center">
+            <GlassPanel variant="heavy" breathe prismatic className="rounded-[26px] p-8 sm:p-10 md:p-14 text-center cut-panel">
               <div className="relative z-10">
                 <h2 className="font-[var(--font-display)] font-extrabold text-3xl md:text-4xl uppercase text-[var(--text-primary)] mb-2">
                   GET IT FIRST.

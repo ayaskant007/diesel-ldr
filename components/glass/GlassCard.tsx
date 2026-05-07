@@ -15,7 +15,7 @@ export function GlassCard({ children, className = '', orbColor, onClick }: Glass
   return (
     <motion.div
       className={cn(
-        'relative overflow-hidden rounded-[22px] glass glass-specular cursor-pointer',
+        'relative overflow-hidden rounded-[18px] glass glass-specular metal-edge cursor-pointer',
         'transition-[border-color] duration-500',
         className
       )}

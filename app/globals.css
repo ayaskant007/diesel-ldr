@@ -2,50 +2,55 @@
 
 /* ═══════════════════════════════════════════════════════════════════════════
    DIESEL × LDR — APPLE LIQUID GLASS + DIESEL BOLD
-   v3: Pure translucent glass. No vintage. No sepia. No grain.
+  v4: Liquid glass + industrial tech. High contrast. No vintage.
    Clean, modern, bold — Apple's depth + Diesel's industrial energy.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @theme {
-  --color-void: #09090B;
-  --color-coal: #131316;
-  --color-oil: #0E0E11;
-  --color-white: #FAFAFA;
-  --color-muted: #A1A1AA;
-  --color-diesel-red: #E5382A;
-  --color-diesel-denim: #2563EB;
-  --color-brass: #C4A265;
-  --color-accent: #E5382A;
+  --color-void: #05060A;
+  --color-coal: #0C1017;
+  --color-oil: #0E121A;
+  --color-white: #F7F8FC;
+  --color-muted: #B7BEC9;
+  --color-diesel-red: #FF3B2F;
+  --color-diesel-denim: #4B7DFF;
+  --color-brass: #C7A86B;
+  --color-steel: #9BA6B8;
+  --color-chrome: #E0E6F0;
+  --color-accent: #FF3B2F;
 
-  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  --font-body: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+  --font-display: var(--font-oxanium), 'Arial Narrow', sans-serif;
+  --font-body: var(--font-space), 'Helvetica Neue', sans-serif;
 }
 
 /* ── PALETTE ───────────────────────────────────────────────────────────── */
 :root {
-  --bg-void: #09090B;
-  --bg-coal: #131316;
-  --bg-surface: #18181B;
+  --bg-void: #05060A;
+  --bg-coal: #0C1017;
+  --bg-surface: #121825;
 
-  --text-primary: #FAFAFA;
-  --text-secondary: #A1A1AA;
-  --text-tertiary: #71717A;
+  --text-primary: #F7F8FC;
+  --text-secondary: #B7BEC9;
+  --text-tertiary: #7C8594;
 
-  --accent-red: #E5382A;
-  --accent-blue: #2563EB;
-  --accent-brass: #C4A265;
-  --accent-gold: #EAB308;
+  --accent-red: #FF3B2F;
+  --accent-blue: #4B7DFF;
+  --accent-brass: #C7A86B;
+  --accent-steel: #9BA6B8;
+  --accent-chrome: #E0E6F0;
+  --accent-gold: #F2C94C;
 
   /* ── LIQUID GLASS — Apple-pure translucency (neutral, not warm) ─── */
-  --glass-bg:          rgba(255, 255, 255, 0.06);
-  --glass-bg-hover:    rgba(255, 255, 255, 0.10);
-  --glass-bg-active:   rgba(255, 255, 255, 0.14);
-  --glass-bg-heavy:    rgba(255, 255, 255, 0.08);
-  --glass-bg-ultra:    rgba(255, 255, 255, 0.12);
+  --glass-bg:          rgba(255, 255, 255, 0.05);
+  --glass-bg-hover:    rgba(255, 255, 255, 0.09);
+  --glass-bg-active:   rgba(255, 255, 255, 0.12);
+  --glass-bg-heavy:    rgba(255, 255, 255, 0.07);
+  --glass-bg-ultra:    rgba(255, 255, 255, 0.11);
 
-  --glass-tint-red:    rgba(229, 56, 42, 0.10);
-  --glass-tint-blue:   rgba(37, 99, 235, 0.10);
-  --glass-tint-brass:  rgba(196, 162, 101, 0.10);
+  --glass-tint-red:    rgba(255, 59, 47, 0.12);
+  --glass-tint-blue:   rgba(75, 125, 255, 0.12);
+  --glass-tint-brass:  rgba(199, 168, 107, 0.12);
+  --glass-tint-steel:  rgba(155, 166, 184, 0.12);
 
   --blur-xs:  blur(8px);
   --blur-sm:  blur(16px);
@@ -53,29 +58,61 @@
   --blur-lg:  blur(56px);
   --blur-xl:  blur(80px);
 
-  --glass-border:        rgba(255, 255, 255, 0.15);
-  --glass-border-bright: rgba(255, 255, 255, 0.28);
+  --glass-border:        rgba(255, 255, 255, 0.18);
+  --glass-border-bright: rgba(255, 255, 255, 0.35);
   --glass-border-dim:    rgba(255, 255, 255, 0.08);
-  --glass-border-accent: rgba(229, 56, 42, 0.35);
+  --glass-border-accent: rgba(255, 59, 47, 0.45);
 
-  --specular-top:    rgba(255, 255, 255, 0.30);
-  --specular-subtle: rgba(255, 255, 255, 0.08);
+  --specular-top:    rgba(255, 255, 255, 0.38);
+  --specular-subtle: rgba(255, 255, 255, 0.12);
 
-  --glass-shadow-sm: 0 4px 16px rgba(0,0,0,0.40), 0 1px 3px rgba(0,0,0,0.25);
-  --glass-shadow-md: 0 8px 32px rgba(0,0,0,0.50), 0 2px 6px rgba(0,0,0,0.30);
-  --glass-shadow-lg: 0 16px 56px rgba(0,0,0,0.60), 0 4px 12px rgba(0,0,0,0.35);
-  --glass-shadow-xl: 0 24px 72px rgba(0,0,0,0.70), 0 8px 24px rgba(0,0,0,0.40);
+  --glass-shadow-sm: 0 6px 18px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.35);
+  --glass-shadow-md: 0 12px 36px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.35);
+  --glass-shadow-lg: 0 20px 60px rgba(0,0,0,0.60), 0 8px 22px rgba(0,0,0,0.40);
+  --glass-shadow-xl: 0 28px 80px rgba(0,0,0,0.70), 0 10px 28px rgba(0,0,0,0.45);
 
-  --glass-inner-glow: inset 0 1px 0 rgba(255,255,255,0.20),
-                      inset 0 -1px 0 rgba(0,0,0,0.10);
+  --glass-inner-glow: inset 0 1px 0 rgba(255,255,255,0.28),
+                      inset 0 -1px 0 rgba(0,0,0,0.35),
+                      inset 0 0 24px rgba(255,255,255,0.05);
 
   --prismatic-border: linear-gradient(
     135deg,
-    rgba(255,255,255,0.35) 0%,
-    rgba(229, 56, 42, 0.30) 25%,
-    rgba(37, 99, 235, 0.35) 50%,
-    rgba(196, 162, 101, 0.30) 75%,
-    rgba(255,255,255,0.25) 100%
+    rgba(255,255,255,0.45) 0%,
+    rgba(255, 59, 47, 0.35) 25%,
+    rgba(75, 125, 255, 0.40) 50%,
+    rgba(199, 168, 107, 0.35) 75%,
+    rgba(255,255,255,0.35) 100%
+  );
+
+  --glass-sheen: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.50) 0%,
+    rgba(255,255,255,0.12) 38%,
+    rgba(0,0,0,0.18) 72%,
+    rgba(255,255,255,0.24) 100%
+  );
+
+  --glass-grain: repeating-linear-gradient(
+    120deg,
+    rgba(255,255,255,0.08) 0 1px,
+    rgba(0,0,0,0.06) 1px 3px
+  );
+
+  --surface-grid: repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 0 1px,
+      transparent 1px 96px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.03) 0 1px,
+      transparent 1px 64px
+    );
+
+  --surface-brush: repeating-linear-gradient(
+    135deg,
+    rgba(255,255,255,0.02) 0 1px,
+    rgba(0,0,0,0.08) 1px 4px
   );
 
   --ease-glass: cubic-bezier(0.16, 1, 0.3, 1);
@@ -88,6 +125,15 @@ html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--bg-void);
+  background-image:
+    var(--surface-grid),
+    radial-gradient(1200px 800px at 15% 12%, rgba(75,125,255,0.08), transparent 60%),
+    radial-gradient(1100px 800px at 85% 10%, rgba(255,59,47,0.06), transparent 55%),
+    radial-gradient(1000px 600px at 50% 80%, rgba(199, 168, 107, 0.05), transparent 50%),
+    linear-gradient(160deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.45) 45%, rgba(255,255,255,0.02) 100%),
+    var(--surface-brush);
+  background-attachment: fixed;
+  background-blend-mode: screen, screen, screen, screen, normal, normal;
   color: var(--text-primary);
   font-family: var(--font-body);
   font-weight: 400;
@@ -107,7 +153,9 @@ body {
    ═══════════════════════════════════════════════════════════════════════ */
 
 .glass {
-  background: var(--glass-bg);
+  background-color: var(--glass-bg);
+  background-image: var(--glass-sheen), var(--glass-grain);
+  background-blend-mode: screen, normal;
   backdrop-filter: var(--blur-md);
   -webkit-backdrop-filter: var(--blur-md);
   border: 1px solid var(--glass-border);
@@ -115,7 +163,9 @@ body {
 }
 
 .glass-heavy {
-  background: var(--glass-bg-heavy);
+  background-color: var(--glass-bg-heavy);
+  background-image: var(--glass-sheen), var(--glass-grain);
+  background-blend-mode: screen, normal;
   backdrop-filter: var(--blur-lg);
   -webkit-backdrop-filter: var(--blur-lg);
   border: 1px solid var(--glass-border-bright);
@@ -123,7 +173,9 @@ body {
 }
 
 .glass-ultra {
-  background: var(--glass-bg-ultra);
+  background-color: var(--glass-bg-ultra);
+  background-image: var(--glass-sheen), var(--glass-grain);
+  background-blend-mode: screen, normal;
   backdrop-filter: var(--blur-xl);
   -webkit-backdrop-filter: var(--blur-xl);
   border: 1px solid var(--glass-border-bright);
@@ -131,12 +183,14 @@ body {
 }
 
 .glass-accent {
-  background: var(--glass-tint-red);
+  background-color: var(--glass-tint-red);
+  background-image: linear-gradient(135deg, rgba(255,255,255,0.20) 0%, rgba(255,59,47,0.12) 40%, rgba(0,0,0,0.20) 100%), var(--glass-grain);
+  background-blend-mode: screen, normal;
   backdrop-filter: var(--blur-sm);
   -webkit-backdrop-filter: var(--blur-sm);
   border: 1px solid var(--glass-border-accent);
   box-shadow: var(--glass-shadow-sm), var(--glass-inner-glow),
-              0 0 24px rgba(229,56,42,0.12);
+              0 0 28px rgba(255,59,47,0.18);
 }
 
 /* ── SPECULAR ─────────────────────────────────────────────────────────── */
@@ -149,9 +203,10 @@ body {
   background: linear-gradient(
     175deg,
     var(--specular-top) 0%,
-    rgba(255,255,255,0.06) 25%,
-    transparent 50%
+    rgba(255,255,255,0.12) 32%,
+    transparent 55%
   );
+  mix-blend-mode: screen;
   pointer-events: none;
   z-index: 1;
 }
@@ -170,6 +225,22 @@ body {
 }
 .glass-prismatic:hover::after {
   opacity: 1;
+}
+
+/* ── METAL + BRUTALIST ─────────────────────────────────────────────── */
+.metal-edge {
+  outline: 1px solid rgba(255,255,255,0.18);
+  outline-offset: -2px;
+}
+
+.cut-panel {
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px));
+}
+
+@media (max-width: 768px) {
+  .cut-panel {
+    clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -225,10 +296,38 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 700px 400px at 70% 50%, rgba(37,99,235,0.05), transparent),
-    radial-gradient(ellipse 600px 500px at 30% 50%, rgba(229,56,42,0.04), transparent);
+    radial-gradient(ellipse 800px 500px at 70% 40%, rgba(75,125,255,0.06), transparent),
+    radial-gradient(ellipse 700px 600px at 30% 60%, rgba(255,59,47,0.05), transparent);
   pointer-events: none;
   z-index: 0;
+}
+
+.section-ambient::after {
+  content: '';
+  position: absolute;
+  inset: -10% 0;
+  background: repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 22px);
+  opacity: 0.15;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── HERO TEXTURES ──────────────────────────────────────────────────── */
+.hero-backdrop {
+  background:
+    radial-gradient(ellipse 60% 65% at 70% 20%, rgba(75,125,255,0.20), transparent 60%),
+    radial-gradient(ellipse 55% 60% at 28% 70%, rgba(255,59,47,0.16), transparent 55%),
+    linear-gradient(to top, rgba(5,6,10,0.98) 0%, rgba(5,6,10,0.45) 55%, transparent 80%);
+}
+
+.hero-texture {
+  background-image:
+    repeating-linear-gradient(110deg, rgba(255,255,255,0.10) 0 1px, transparent 1px 18px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 6px);
+  mix-blend-mode: screen;
+  opacity: 0.28;
+  pointer-events: none;
 }
 
 /* ── ACCESSIBILITY ────────────────────────────────────────────────────── */

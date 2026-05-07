@@ -38,10 +38,10 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div className="min-h-screen relative">
-      <LiquidOrb color={`${product.orbColor}60`} size={700} className="top-[-120px] right-[-180px]" opacity={0.15} blur={100} delay={0} />
+      <LiquidOrb color={`${product.orbColor}50`} size={700} className="top-[-120px] right-[-180px]" opacity={0.15} blur={100} delay={0} />
 
-      <div className="max-w-[1400px] mx-auto px-6 pt-28 pb-28 relative z-10">
-        <nav className="mb-8 font-[var(--font-display)] font-semibold text-[10px] uppercase tracking-[0.12em]">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 pt-20 md:pt-28 pb-20 md:pb-28 relative z-10">
+        <nav className="mb-6 md:mb-8 font-[var(--font-display)] font-semibold text-[10px] md:text-[11px] uppercase tracking-[0.15em]">
           <Link href="/collection" className="text-[var(--text-tertiary)] hover:text-[var(--accent-red)] transition-colors">Collection</Link>
           <span className="text-[var(--text-tertiary)] opacity-40 mx-2">/</span>
           <span className="text-[var(--text-tertiary)]">{product.category}</span>
@@ -49,11 +49,11 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <span className="text-[var(--text-primary)]">{product.name}</span>
         </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-10 lg:gap-16">
-          <GlassPanel variant="heavy" prismatic className="rounded-[24px] p-5">
-            <div className="relative w-full aspect-[4/5] z-10 rounded-[18px] overflow-hidden">
-              <div className="absolute inset-0" style={{ background: `radial-gradient(circle at center, ${product.orbColor}20 0%, transparent 65%)` }} />
-              <Image src={product.images[0]} alt={product.name} fill className="object-contain relative z-10" sizes="(max-width: 1024px) 100vw, 55vw" priority />
+        <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-10 lg:gap-14 items-start">
+          <GlassPanel variant="heavy" prismatic className="rounded-[24px] p-2 sm:p-3 cut-panel">
+            <div className="relative w-full aspect-square lg:aspect-[4/5] z-10 rounded-[18px] overflow-hidden">
+              <div className="absolute inset-0" style={{ background: `radial-gradient(circle at center, ${product.orbColor}25 0%, transparent 65%)` }} />
+              <Image src={product.images[0]} alt={product.name} fill className="object-cover relative z-10" sizes="(max-width: 1024px) 100vw, 55vw" priority />
             </div>
           </GlassPanel>
 
@@ -101,10 +101,10 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         </div>
 
         {relatedProducts.length > 0 && (
-          <div className="mt-24">
-            <p className="font-[var(--font-display)] font-bold text-[10px] tracking-[0.3em] uppercase text-[var(--accent-red)] mb-2">RECOMMENDED</p>
-            <h2 className="font-[var(--font-display)] font-extrabold text-xl uppercase tracking-[0.08em] text-[var(--text-primary)] mb-8">YOU MAY ALSO LIKE</h2>
-            <div className="flex overflow-x-auto lg:grid lg:grid-cols-3 gap-5 pb-4 no-scrollbar">
+          <div className="mt-20 md:mt-28 border-t border-[var(--glass-border-dim)] pt-12 md:pt-14">
+            <p className="font-[var(--font-display)] font-bold text-[10px] tracking-[0.3em] uppercase text-[var(--accent-red)] mb-2 md:mb-3">RECOMMENDED</p>
+            <h2 className="font-[var(--font-display)] font-extrabold text-2xl md:text-3xl uppercase tracking-[0.06em] text-[var(--text-primary)] mb-8">YOU MAY ALSO LIKE</h2>
+            <div className="flex overflow-x-auto lg:grid lg:grid-cols-3 gap-5 pb-6 no-scrollbar">
               {relatedProducts.map(related => (
                 <Link key={related.id} href={`/collection/${related.slug}`} className="min-w-[260px] lg:min-w-0 flex-shrink-0 group">
                   <GlassCard orbColor={related.orbColor}>

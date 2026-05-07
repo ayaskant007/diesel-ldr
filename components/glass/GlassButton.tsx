@@ -35,7 +35,7 @@ export function GlassButton({
   fullWidth = false,
 }: GlassButtonProps) {
   const baseClass = cn(
-    'relative overflow-hidden rounded-full glass-specular',
+    'relative overflow-hidden rounded-full glass-specular metal-edge',
     variant === 'accent'
       ? 'bg-[var(--accent-red)] border border-[rgba(229,56,42,0.5)] shadow-[0_0_24px_rgba(229,56,42,0.2)]'
       : 'glass',

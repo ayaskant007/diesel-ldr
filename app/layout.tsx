@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Barlow_Condensed } from "next/font/google";
+import { Space_Grotesk, Oxanium } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-space",
   display: "swap",
 });
 
-const barlow = Barlow_Condensed({
-  weight: ["400", "600", "700", "800"],
+const oxanium = Oxanium({
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-barlow",
+  variable: "--font-oxanium",
   display: "swap",
   preload: true,
 });
@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${barlow.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${oxanium.variable}`}>
       <body className="antialiased min-h-screen flex flex-col">
         <Navbar />
         <main id="main-content" className="flex-grow">

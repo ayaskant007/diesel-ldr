@@ -52,7 +52,7 @@ export default function Navbar() {
             DIESEL × LDR
           </Link>
 
-          <div className="hidden md:flex items-center gap-7 z-10">
+          <div className="hidden md:flex items-center gap-6 lg:gap-7 z-10">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
