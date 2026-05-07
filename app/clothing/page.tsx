@@ -34,7 +34,7 @@ export default function ClothingPage() {
             THE CLOTHING
           </h1>
           <p className="text-[var(--text-secondary)] mt-3 text-sm max-w-md">
-            Wear the collaboration. Eight pieces that blur the line between fashion editorial and the everyday.
+            Wear the collaboration. Six pieces that blur the line between fashion editorial and the everyday.
           </p>
         </motion.div>
         <div className="mt-6 section-divider" />

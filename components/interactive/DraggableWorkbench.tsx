@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 interface DraggableCardProps {
   product: Product;
   index: number;
-  containerRef: React.RefObject<HTMLDivElement>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
 }
 
 function DraggableCard({ product, index, containerRef }: DraggableCardProps) {

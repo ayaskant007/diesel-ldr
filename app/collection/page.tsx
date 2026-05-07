@@ -11,8 +11,8 @@ import { GlassPanel } from '@/components/glass/GlassPanel';
 import { LiquidOrb } from '@/components/glass/LiquidOrb';
 import { Sparkles } from 'lucide-react';
 
-type Category = 'ALL' | 'LIPS' | 'EYES' | 'CHEEKS' | 'GLOW';
-const categories: Category[] = ['ALL', 'LIPS', 'EYES', 'CHEEKS', 'GLOW'];
+type Category = 'ALL' | 'LIPS' | 'EYES' | 'CHEEKS' | 'GLOW' | 'FRAGRANCE';
+const categories: Category[] = ['ALL', 'LIPS', 'EYES', 'CHEEKS', 'GLOW', 'FRAGRANCE'];
 
 export default function CollectionPage() {
   const [activeFilter, setActiveFilter] = useState<Category>('ALL');
@@ -36,7 +36,7 @@ export default function CollectionPage() {
           <h1 className="font-[var(--font-display)] font-extrabold text-[clamp(48px,9vw,110px)] uppercase text-[var(--text-primary)] leading-[0.93]">
             THE COLLECTION
           </h1>
-          <p className="text-[var(--text-secondary)] mt-3 text-sm max-w-md">6 pieces. One collaboration. Objects that blur the line between beauty and art.</p>
+          <p className="text-[var(--text-secondary)] mt-3 text-sm max-w-md">11 pieces. One collaboration. Objects that blur the line between beauty, fragrance, and art.</p>
         </motion.div>
         <div className="mt-6 section-divider" />
       </div>
