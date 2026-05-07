@@ -1,11 +1,11 @@
 "use client";
 
-import { use } from 'react';
+import { use, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ShoppingBag } from 'lucide-react';
-import { getClothingBySlug, clothingProducts } from '@/lib/products';
+import { ArrowLeft, ShoppingBag, Check } from 'lucide-react';
+import { getClothingBySlug } from '@/lib/products';
 import { GlassPanel } from '@/components/glass/GlassPanel';
 import { GlassButton } from '@/components/glass/GlassButton';
 import { GlassBadge } from '@/components/glass/GlassBadge';
@@ -16,6 +16,8 @@ export default function ClothingProductPage({ params }: { params: Promise<{ slug
   const { slug } = use(params);
   const product = getClothingBySlug(slug);
   const addItem = useCart((state) => state.addItem);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [added, setAdded] = useState(false);
 
   if (!product) {
     return (
@@ -27,6 +29,21 @@ export default function ClothingProductPage({ params }: { params: Promise<{ slug
       </div>
     );
   }
+
+  const handleAddToBag = () => {
+    if (!selectedSize) return;
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0],
+      type: 'clothing',
+      size: selectedSize,
+      category: product.category,
+    });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+  };
 
   return (
     <div className="min-h-screen relative">
@@ -87,12 +104,17 @@ export default function ClothingProductPage({ params }: { params: Promise<{ slug
             </p>
 
             <div>
-              <p className="font-[var(--font-display)] font-bold text-[10px] uppercase tracking-[0.2em] text-[var(--text-tertiary)] mb-3">SIZES</p>
+              <p className="font-[var(--font-display)] font-bold text-[10px] uppercase tracking-[0.2em] text-[var(--text-tertiary)] mb-3">SELECT SIZE</p>
               <div className="flex flex-wrap gap-2">
                 {product.sizes.map((size) => (
                   <button
                     key={size}
-                    className="font-[var(--font-display)] font-semibold text-[11px] uppercase tracking-[0.08em] px-4 py-2 rounded-full glass text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--glass-border-bright)] transition-all duration-400"
+                    onClick={() => setSelectedSize(size)}
+                    className={`font-[var(--font-display)] font-semibold text-[11px] uppercase tracking-[0.08em] px-4 py-2 rounded-full transition-all duration-400 ${
+                      selectedSize === size
+                        ? 'bg-[var(--accent-red)] text-white border border-[rgba(255,59,47,0.6)] shadow-[0_0_16px_rgba(255,59,47,0.25)]'
+                        : 'glass text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--glass-border-bright)]'
+                    }`}
                   >
                     {size}
                   </button>
@@ -105,19 +127,18 @@ export default function ClothingProductPage({ params }: { params: Promise<{ slug
                 variant="accent"
                 size="lg"
                 fullWidth
-                onClick={() => addItem({
-                  productId: product.id,
-                  name: product.name,
-                  price: product.price,
-                  image: product.images[0],
-                  quantity: 1,
-                })}
+                disabled={!selectedSize}
+                onClick={handleAddToBag}
               >
                 <span className="flex items-center justify-center gap-2">
-                  <ShoppingBag size={16} /> ADD TO BAG
+                  {added ? <><Check size={16} /> ADDED!</> : <><ShoppingBag size={16} /> ADD TO BAG</>}
                 </span>
               </GlassButton>
             </div>
+
+            {!selectedSize && (
+              <p className="text-[var(--text-tertiary)] text-xs text-center">Please select a size to continue</p>
+            )}
           </motion.div>
         </div>
       </div>

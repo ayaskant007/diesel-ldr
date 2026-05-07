@@ -30,9 +30,16 @@ const staggerContainer = {
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const lookbookRef = useRef<HTMLDivElement>(null);
+  
   const { scrollY } = useScroll();
+  const { scrollYProgress: lookbookProgress } = useScroll({
+    target: lookbookRef,
+    offset: ["start end", "end start"]
+  });
+
   const parallaxY = useTransform(scrollY, [0, 800], [0, 140]);
-  const parallaxY2 = useTransform(scrollY, [0, 800], [0, 80]);
+  const parallaxY2 = useTransform(lookbookProgress, [0, 1], [-60, 60]);
   const scrollOpacity = useTransform(scrollY, [0, 300], [1, 0]);
   const heroScale = useTransform(scrollY, [0, 600], [1, 1.08]);
 
@@ -204,11 +211,11 @@ export default function Home() {
                         <p className="font-[var(--font-display)] font-semibold text-[10px] uppercase tracking-[0.15em] text-[var(--text-tertiary)]">{product.category}</p>
                         <span className="font-[var(--font-display)] font-bold text-sm text-[var(--text-primary)]">£{product.price}</span>
                       </div>
-                      <div className="relative h-[260px] overflow-hidden mx-3 mt-2 rounded-[16px]">
+                      <div className="relative h-[280px] overflow-hidden mx-3 mt-3 rounded-[14px]">
                         <Image src={product.images[0]} alt={product.name} fill className="object-cover transition-transform duration-900 ease-[var(--ease-premium)] group-hover:scale-[1.05]" sizes="(max-width: 768px) 100vw, 33vw" />
                         <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[rgba(3,4,8,0.75)] to-transparent" />
                       </div>
-                      <div className="p-4 pt-3 flex justify-between items-center">
+                      <div className="p-4 pt-4 flex justify-between items-center">
                         <h3 className="font-[var(--font-display)] font-bold text-[var(--text-primary)] text-sm uppercase tracking-[0.04em]">{product.name}</h3>
                         <GlassBadge>{product.shade}</GlassBadge>
                       </div>
@@ -294,7 +301,7 @@ export default function Home() {
       </section>
 
       {/* ═══ LOOKBOOK TEASER ═══ */}
-      <section className="py-20 md:py-28 px-4 sm:px-6 relative overflow-hidden section-ambient">
+      <section ref={lookbookRef} className="py-20 md:py-28 px-4 sm:px-6 relative overflow-hidden section-ambient">
         <LiquidOrb color="rgba(37,99,235,0.4)" size={450} className="right-[-120px] top-[-80px]" opacity={0.10} delay={1} duration={14} />
 
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[55%_45%] gap-8 md:gap-12 items-center relative z-10">
@@ -304,13 +311,15 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}
           >
-            <GlassPanel variant="heavy" prismatic className="rounded-[22px] overflow-hidden cut-panel">
-              <motion.div
-                className="relative aspect-[4/5] z-10"
-                style={{ y: parallaxY2 }}
-              >
-                <Image src="/images/hero.png" alt="Campaign editorial" fill className="object-cover brightness-[0.65] contrast-[1.10]" sizes="(max-width: 768px) 100vw, 55vw" />
-              </motion.div>
+            <GlassPanel variant="heavy" prismatic className="rounded-[22px] overflow-hidden cut-panel border-0!">
+              <div className="relative aspect-[4/5] z-10 overflow-hidden">
+                <motion.div
+                  className="absolute inset-[0%_-10%] scale-110"
+                  style={{ y: parallaxY2 }}
+                >
+                  <Image src="/images/hero.png" alt="Campaign editorial" fill className="object-cover brightness-[0.65] contrast-[1.10]" sizes="(max-width: 768px) 100vw, 55vw" />
+                </motion.div>
+              </div>
             </GlassPanel>
           </motion.div>
 

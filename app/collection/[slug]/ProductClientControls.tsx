@@ -10,7 +10,14 @@ export default function ProductClientControls({ product }: { product: Product })
   const [isAdded, setIsAdded] = useState(false);
 
   const handleAddToBag = () => {
-    addItem(product);
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0],
+      type: 'beauty',
+      category: product.category,
+    });
     setIsAdded(true);
     setTimeout(() => {
       setIsAdded(false);

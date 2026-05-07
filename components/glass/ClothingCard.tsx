@@ -67,7 +67,7 @@ export function ClothingCard({ product, featured = false, index = 0 }: ClothingC
             </div>
 
             <div className={cn(
-              "relative overflow-hidden mx-3 mt-2 rounded-[16px]",
+              "relative overflow-hidden mx-3 mt-3 rounded-[12px]",
               featured ? "h-[380px] md:h-[480px]" : "h-[300px]"
             )}>
               <Image
@@ -86,7 +86,7 @@ export function ClothingCard({ product, featured = false, index = 0 }: ClothingC
               </div>
             </div>
 
-            <div className="p-4 pt-3">
+            <div className="p-4 pt-4">
               <h3 className="font-[var(--font-display)] font-bold text-[var(--text-primary)] text-sm uppercase tracking-[0.04em] mb-2 leading-tight">
                 {product.name}
               </h3>

@@ -13,7 +13,14 @@ export default function ProductClientSection({ product }: { product: Product }) 
 
   const handleAddToBag = () => {
     setButtonState('adding');
-    addItem(product);
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0],
+      type: 'beauty',
+      category: product.category,
+    });
     setTimeout(() => setButtonState('added'), 350);
     setTimeout(() => setButtonState('idle'), 2200);
   };

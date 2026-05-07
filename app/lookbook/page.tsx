@@ -8,6 +8,7 @@ import { GlassPanel } from '@/components/glass/GlassPanel';
 import { GlassButton } from '@/components/glass/GlassButton';
 import { LiquidOrb } from '@/components/glass/LiquidOrb';
 import { useRef } from 'react';
+import { DraggableWorkbench } from '@/components/interactive/DraggableWorkbench';
 
 const editorialRows = [
   { product: products[0], reverse: false },
@@ -51,24 +52,13 @@ export default function LookbookPage() {
         </div>
       </section>
 
-      {/* FILMSTRIP */}
-      <section className="py-20 overflow-hidden section-ambient">
-        <div className="max-w-[1400px] mx-auto px-6 mb-6">
+      {/* INTERACTIVE WORKBENCH */}
+      <section className="py-10 md:py-20 overflow-hidden relative">
+        <div className="max-w-[1400px] mx-auto px-6 mb-6 relative z-50 pointer-events-none">
           <p className="font-[var(--font-display)] font-bold text-[10px] tracking-[0.3em] uppercase text-[var(--accent-red)]">CAMPAIGN FRAMES</p>
         </div>
-        <div ref={filmstripRef} className="flex gap-4 px-6 overflow-x-auto no-scrollbar">
-          {products.map((product) => (
-            <GlassPanel key={product.id} variant="heavy" className="rounded-[18px] overflow-hidden shrink-0">
-              <div className="relative h-[55vh] w-[38vh] z-10">
-                <Image src={product.images[0]} alt={product.name} fill className="object-cover brightness-[0.8]" sizes="38vh" />
-                <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-[rgba(9,9,11,0.8)] to-transparent">
-                  <p className="font-[var(--font-display)] font-bold text-[11px] uppercase tracking-[0.08em] text-[var(--text-primary)]">{product.name}</p>
-                  <p className="font-[var(--font-display)] text-[10px] uppercase text-[var(--text-tertiary)] mt-0.5">{product.category}</p>
-                </div>
-              </div>
-            </GlassPanel>
-          ))}
-        </div>
+        
+        <DraggableWorkbench items={products} />
       </section>
 
       {/* STATEMENT */}
