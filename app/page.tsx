@@ -34,7 +34,7 @@ export default function Home() {
   const lookbookRef = useRef<HTMLDivElement>(null);
   const currencyCode = useCurrencyStore((state) => state.currencyCode);
   const exchangeRate = useCurrencyStore((state) => state.exchangeRate);
-  
+
   const { scrollY } = useScroll();
   const { scrollYProgress: lookbookProgress } = useScroll({
     target: lookbookRef,
@@ -53,26 +53,26 @@ export default function Home() {
         { opacity: 0, y: 12, filter: 'blur(6px)' },
         { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, delay: 0.4 }
       )
-      .fromTo('.hero-title-1',
-        { opacity: 0, y: 20, filter: 'blur(10px)', clipPath: 'inset(0 100% 0 0)' },
-        { opacity: 1, y: 0, filter: 'blur(0px)', clipPath: 'inset(0 0% 0 0)', duration: 1.0 },
-        '-=0.3'
-      )
-      .fromTo('.hero-title-2',
-        { opacity: 0, y: 20, filter: 'blur(10px)', clipPath: 'inset(0 100% 0 0)' },
-        { opacity: 1, y: 0, filter: 'blur(0px)', clipPath: 'inset(0 0% 0 0)', duration: 1.0 },
-        '-=0.6'
-      )
-      .fromTo('.hero-sub',
-        { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, duration: 0.6 },
-        '-=0.3'
-      )
-      .fromTo('.hero-cta',
-        { opacity: 0, y: 10, scale: 0.96 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6 },
-        '-=0.2'
-      );
+        .fromTo('.hero-title-1',
+          { opacity: 0, y: 20, filter: 'blur(10px)', clipPath: 'inset(0 100% 0 0)' },
+          { opacity: 1, y: 0, filter: 'blur(0px)', clipPath: 'inset(0 0% 0 0)', duration: 1.0 },
+          '-=0.3'
+        )
+        .fromTo('.hero-title-2',
+          { opacity: 0, y: 20, filter: 'blur(10px)', clipPath: 'inset(0 100% 0 0)' },
+          { opacity: 1, y: 0, filter: 'blur(0px)', clipPath: 'inset(0 0% 0 0)', duration: 1.0 },
+          '-=0.6'
+        )
+        .fromTo('.hero-sub',
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.6 },
+          '-=0.3'
+        )
+        .fromTo('.hero-cta',
+          { opacity: 0, y: 10, scale: 0.96 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.6 },
+          '-=0.2'
+        );
     });
     return () => ctx.revert();
   }, []);
@@ -82,7 +82,7 @@ export default function Home() {
       {/* ═══ HERO ═══ */}
       <section ref={heroRef} className="relative h-screen w-full overflow-hidden flex items-end justify-start">
         <motion.div style={{ y: parallaxY, scale: heroScale }} className="absolute inset-0 z-0 will-change-transform">
-          <Image src="/images/hero.png" alt="DIESEL × LDR Campaign" fill priority className="object-cover brightness-[0.30] contrast-[1.25] saturate-[1.15]" sizes="100vw" />
+          <Image src="/images/Screenshot 2026-05-09 001059.png" alt="DIESEL × LDR Campaign" fill priority className="object-cover brightness-[0.30] contrast-[1.25] saturate-[1.15]" sizes="100vw" />
           <div className="absolute inset-0 hero-backdrop" />
           <div className="absolute inset-0 hero-texture" />
         </motion.div>
@@ -107,11 +107,11 @@ export default function Home() {
               </h1>
               <div className="flex items-center gap-8 mb-10 mt-2 opacity-0 hero-sub">
                 <div className="relative h-7 w-28 md:h-9 md:w-36">
-                   <Image src="/images/diesel-wordmark.png" alt="Diesel" fill className="object-contain invert" />
+                  <Image src="/images/diesel-wordmark.png" alt="Diesel" fill className="object-contain invert" />
                 </div>
                 <div className="w-[1px] h-10 bg-[var(--text-tertiary)] opacity-20" />
                 <div className="relative h-14 w-32 md:h-20 md:w-44">
-                   <Image src="/images/lana-del-rey-logo.png" alt="Lana Del Rey" fill className="object-contain mix-blend-screen opacity-70 hover:opacity-100 transition-opacity duration-700" />
+                  <Image src="/images/lana-del-rey-logo.png" alt="Lana Del Rey" fill className="object-contain mix-blend-screen opacity-70 hover:opacity-100 transition-opacity duration-700" />
                 </div>
               </div>
               <p className="hero-sub opacity-0 text-[var(--text-secondary)] text-base mb-10 leading-relaxed max-w-sm">
@@ -341,7 +341,7 @@ export default function Home() {
                   className="absolute inset-[0%_-10%] scale-110"
                   style={{ y: parallaxY2 }}
                 >
-                  <Image src="/images/hero.png" alt="Campaign editorial" fill className="object-cover brightness-[0.65] contrast-[1.10]" sizes="(max-width: 768px) 100vw, 55vw" />
+                  <Image src="/images/Screenshot 2026-05-09 001059.png" alt="Campaign editorial" fill className="object-cover brightness-[0.65] contrast-[1.10]" sizes="(max-width: 768px) 100vw, 55vw" />
                 </motion.div>
               </div>
             </GlassPanel>

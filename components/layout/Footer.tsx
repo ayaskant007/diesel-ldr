@@ -20,7 +20,7 @@ export default function Footer() {
                 </div>
               </div>
               <p className="text-[var(--text-secondary)] text-sm font-medium tracking-wide">
-                Young and Beautiful, 2024
+                Young and Beautiful, 2026
               </p>
             </div>
 
@@ -62,7 +62,7 @@ export default function Footer() {
 
           <div className="pt-8 border-t border-[var(--glass-border-dim)] flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4">
             <p className="text-[12px] sm:text-[13px] text-[var(--text-secondary)] opacity-60">
-              © 2024 Diesel S.p.A. × Lana Del Rey. Limited Edition.
+              © 2026 Diesel S.p.A. × Lana Del Rey. Limited Edition.
             </p>
             <p className="text-[12px] sm:text-[13px] text-[var(--text-secondary)] opacity-60">
               Built with obsession.
