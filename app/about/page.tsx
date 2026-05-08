@@ -83,7 +83,7 @@ export default function AboutPage() {
       </section>
 
       {/* THE OBJECTS */}
-      <section className="py-28 px-6 overflow-hidden">
+      {/* <section className="py-28 px-6 overflow-hidden">
         <div className="max-w-[1400px] mx-auto mb-8">
           <p className="font-[var(--font-display)] font-bold text-[10px] tracking-[0.3em] uppercase text-[var(--accent-red)] mb-2">THE DETAILS</p>
           <h2 className="font-[var(--font-display)] font-extrabold text-[clamp(40px,7vw,72px)] uppercase text-[var(--text-primary)]">THE OBJECTS</h2>
@@ -99,9 +99,9 @@ export default function AboutPage() {
             </GlassCard>
           ))}
         </div>
-      </section>
+      </section> */}
 
-      {/* PRESS */}
+      {/* PRESS
       <section className="py-28 px-6 section-ambient">
         <div className="max-w-[1400px] mx-auto">
           <p className="font-[var(--font-display)] font-bold text-[10px] tracking-[0.3em] uppercase text-[var(--accent-red)] mb-8">PRESS</p>
@@ -121,7 +121,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CREDITS */}
       <section className="py-12 px-6 text-center">

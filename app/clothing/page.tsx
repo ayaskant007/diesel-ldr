@@ -7,8 +7,8 @@ import { ClothingCard } from '@/components/glass/ClothingCard';
 import { GlassPanel } from '@/components/glass/GlassPanel';
 import { LiquidOrb } from '@/components/glass/LiquidOrb';
 
-type ClothingFilter = 'ALL' | 'TOPS' | 'OUTERWEAR' | 'DENIM' | 'BOTTOMS' | 'ACCESSORIES';
-const categories: ClothingFilter[] = ['ALL', 'TOPS', 'OUTERWEAR', 'DENIM', 'BOTTOMS', 'ACCESSORIES'];
+type ClothingFilter = 'ALL' | 'TOPS' | 'OUTERWEAR' | 'DENIM';
+const categories: ClothingFilter[] = ['ALL', 'TOPS', 'OUTERWEAR', 'DENIM'];
 
 export default function ClothingPage() {
   const [activeFilter, setActiveFilter] = useState<ClothingFilter>('ALL');
@@ -49,9 +49,8 @@ export default function ClothingPage() {
                 onClick={() => setActiveFilter(cat)}
                 role="radio"
                 aria-checked={activeFilter === cat}
-                className={`relative font-[var(--font-display)] font-semibold text-[10px] uppercase tracking-[0.12em] px-4 py-1.5 rounded-full transition-all duration-500 ease-[var(--ease-premium)] ${
-                  activeFilter === cat ? 'text-white' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-                }`}
+                className={`relative font-[var(--font-display)] font-semibold text-[10px] uppercase tracking-[0.12em] px-4 py-1.5 rounded-full transition-all duration-500 ease-[var(--ease-premium)] ${activeFilter === cat ? 'text-white' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                  }`}
               >
                 {activeFilter === cat && (
                   <motion.span
