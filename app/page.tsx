@@ -105,8 +105,17 @@ export default function Home() {
                   AND BEAUTIFUL
                 </span>
               </h1>
-              <p className="hero-sub opacity-0 text-[var(--text-secondary)] text-base mb-8 leading-relaxed max-w-sm">
-                Six objects. Eight garments. One collaboration. A limited-edition collection that refuses to be ordinary.
+              <div className="flex items-center gap-8 mb-10 mt-2 opacity-0 hero-sub">
+                <div className="relative h-7 w-28 md:h-9 md:w-36">
+                   <Image src="/images/diesel-wordmark.png" alt="Diesel" fill className="object-contain invert" />
+                </div>
+                <div className="w-[1px] h-10 bg-[var(--text-tertiary)] opacity-20" />
+                <div className="relative h-14 w-32 md:h-20 md:w-44">
+                   <Image src="/images/lana-del-rey-logo.png" alt="Lana Del Rey" fill className="object-contain mix-blend-screen opacity-70 hover:opacity-100 transition-opacity duration-700" />
+                </div>
+              </div>
+              <p className="hero-sub opacity-0 text-[var(--text-secondary)] text-base mb-10 leading-relaxed max-w-sm">
+                Eleven objects. Seven garments. One collaboration. A limited-edition collection that refuses to be ordinary.
               </p>
               <div className="hero-cta opacity-0 flex flex-wrap gap-3">
                 <GlassButton href="/collection" size="lg" variant="accent">SHOP BEAUTY →</GlassButton>
@@ -281,22 +290,34 @@ export default function Home() {
         <LiquidOrb color="rgba(229,56,42,0.3)" size={220} className="left-[20%] top-[30%]" opacity={0.12} delay={0} pulse />
         <LiquidOrb color="rgba(37,99,235,0.3)" size={200} className="right-[20%] bottom-[30%]" opacity={0.10} delay={2} pulse />
 
-        <div className="max-w-[720px] mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-[840px] mx-auto px-4 sm:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.96, filter: 'blur(8px)' }}
             whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
             viewport={{ once: true }}
             transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
           >
-            <GlassPanel variant="heavy" prismatic glow="rgba(255,59,47,0.10)" className="rounded-[26px] p-8 sm:p-12 md:p-16 text-center cut-panel">
-              <div className="relative z-10">
-                <div className="w-10 h-[2px] bg-[var(--accent-red)] mx-auto mb-8 sm:mb-10 shadow-[0_0_12px_rgba(255,59,47,0.4)]" />
-                <blockquote className="font-[var(--font-display)] font-extrabold text-[clamp(24px,4.5vw,46px)] uppercase text-[var(--text-primary)] leading-[1.15] mb-8 sm:mb-10">
+            <GlassPanel variant="heavy" prismatic glow="rgba(255,59,47,0.12)" className="rounded-[32px] p-12 sm:p-20 md:p-24 text-center cut-panel">
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="relative h-32 w-72 md:h-44 md:w-[420px] mb-14 opacity-60 hover:opacity-100 transition-opacity">
+                  <Image src="/images/lana-del-rey-logo.png" alt="Lana Del Rey" fill className="object-contain mix-blend-screen" />
+                </div>
+                <div className="w-20 h-[2px] bg-[var(--accent-red)] mx-auto mb-12 sm:mb-16 shadow-[0_0_15px_rgba(255,59,47,0.7)]" />
+                <blockquote className="font-[var(--font-display)] font-extrabold text-[clamp(32px,6vw,64px)] uppercase text-[var(--text-primary)] leading-[0.95] mb-16 sm:mb-20 tracking-tighter max-w-[95%]">
                   &quot;YOUNG AND BEAUTIFUL IS A WAY OF DRESSING.&quot;
                 </blockquote>
-                <cite className="font-[var(--font-display)] font-semibold text-[10px] uppercase tracking-[0.25em] text-[var(--text-tertiary)] not-italic">
-                  — DIESEL × LANA DEL REY
-                </cite>
+                <div className="flex flex-col items-center gap-6">
+                  <div className="relative h-10 w-48 md:h-12 md:w-56">
+                    <Image src="/images/diesel-wordmark.png" alt="Diesel" fill className="object-contain invert opacity-80" />
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="h-[1px] w-8 bg-white/20" />
+                    <cite className="font-[var(--font-display)] font-bold text-[13px] uppercase tracking-[0.4em] text-[var(--text-primary)] not-italic">
+                      X LANA DEL REY
+                    </cite>
+                    <div className="h-[1px] w-8 bg-white/20" />
+                  </div>
+                </div>
               </div>
             </GlassPanel>
           </motion.div>

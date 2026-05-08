@@ -23,6 +23,11 @@ import { CurrencyInitializer } from "@/components/interactive/CurrencyInitialize
 export const metadata: Metadata = {
   title: "Diesel × Lana Del Rey — Young and Beautiful",
   description: "The Lived-In Look. 11 pieces. One collab. A limited-edition collection by Diesel and Lana Del Rey.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

@@ -58,7 +58,7 @@ export default function AboutPage() {
           <GlassPanel variant="heavy" className="rounded-[22px] p-8 md:p-10">
             <p className="relative z-10 text-[var(--text-secondary)] leading-[1.8] text-[15px]">
               When Renzo Rosso met Lizzy Grant, neither came to compromise. Diesel brought five decades of denim heritage
-              and industrial fearlessness. Lana brought the vision, the poetry, and the aesthetic. Together they made six objects that are
+              and industrial fearlessness. Lana brought the vision, the poetry, and the aesthetic. Together they made eleven objects that are
               neither makeup nor industrial design — but something entirely new.
             </p>
           </GlassPanel>
@@ -126,7 +126,7 @@ export default function AboutPage() {
       {/* CREDITS */}
       <section className="py-12 px-6 text-center">
         <p className="text-[10px] uppercase tracking-[0.25em] text-[var(--text-tertiary)]">
-          Creative Direction: Diesel Lab × Interscope
+          Creative Direction: Tech Mobius Club
         </p>
       </section>
     </div>

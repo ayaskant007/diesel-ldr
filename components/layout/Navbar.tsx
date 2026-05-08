@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import { useCart } from '@/hooks/useCart';
 import { CurrencySelector } from '@/components/interactive/CurrencySelector';
 
@@ -50,8 +51,24 @@ export default function Navbar() {
           role="navigation"
           aria-label="Main navigation"
         >
-          <Link href="/" className="font-[var(--font-display)] font-extrabold text-[var(--text-primary)] text-[14px] tracking-[0.1em] uppercase hover:text-[var(--accent-red)] transition-colors duration-500 z-10 shrink-0">
-            DIESEL × LDR
+          <Link href="/" className="relative flex items-center gap-4 z-10 shrink-0 group py-1">
+            <div className="relative h-6 w-24 md:h-7 md:w-28 transition-transform duration-500 group-hover:scale-105">
+              <Image 
+                src="/images/diesel-wordmark.png" 
+                alt="DIESEL" 
+                fill 
+                className="object-contain invert brightness-0"
+              />
+            </div>
+            <div className="w-[1px] h-4 bg-white/20" />
+            <div className="relative h-10 w-24 md:h-12 md:w-28 transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100">
+              <Image 
+                src="/images/lana-del-rey-logo.png" 
+                alt="LANA DEL REY" 
+                fill 
+                className="object-contain mix-blend-screen"
+              />
+            </div>
           </Link>
 
           <div className="hidden md:flex items-center gap-5 lg:gap-6 z-10">

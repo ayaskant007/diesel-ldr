@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Camera, MessageCircle, Video } from 'lucide-react';
+import Image from 'next/image';
 import { GlassPanel } from '@/components/glass/GlassPanel';
 
 export default function Footer() {
@@ -9,11 +10,16 @@ export default function Footer() {
       <GlassPanel className="rounded-none px-4 sm:px-6 pt-12 sm:pt-16 pb-8">
         <div className="max-w-[1440px] mx-auto relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-12 sm:mb-16">
-            <div className="space-y-3">
-              <h3 className="font-[var(--font-display)] font-extrabold text-2xl uppercase tracking-[0.1em] text-[var(--text-primary)]">
-                DIESEL × LDR
-              </h3>
-              <p className="text-[var(--text-tertiary)] text-sm">
+            <div className="space-y-8">
+              <div className="flex flex-col gap-6">
+                <div className="relative h-7 w-32">
+                  <Image src="/images/diesel-wordmark.png" alt="Diesel" fill className="object-contain invert brightness-0" />
+                </div>
+                <div className="relative h-12 w-40 ml-[-4px] opacity-80 hover:opacity-100 transition-opacity">
+                  <Image src="/images/lana-del-rey-logo.png" alt="Lana Del Rey" fill className="object-contain mix-blend-screen" />
+                </div>
+              </div>
+              <p className="text-[var(--text-secondary)] text-sm font-medium tracking-wide">
                 Young and Beautiful, 2024
               </p>
             </div>
@@ -55,10 +61,10 @@ export default function Footer() {
           </div>
 
           <div className="pt-8 border-t border-[var(--glass-border-dim)] flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4">
-            <p className="text-[12px] sm:text-[13px] text-[var(--text-tertiary)]">
+            <p className="text-[12px] sm:text-[13px] text-[var(--text-secondary)] opacity-60">
               © 2024 Diesel S.p.A. × Lana Del Rey. Limited Edition.
             </p>
-            <p className="text-[12px] sm:text-[13px] text-[var(--text-tertiary)]">
+            <p className="text-[12px] sm:text-[13px] text-[var(--text-secondary)] opacity-60">
               Built with obsession.
             </p>
           </div>
