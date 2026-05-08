@@ -31,7 +31,7 @@ export default function LookbookPage() {
       {/* HERO */}
       <section className="relative h-screen w-full overflow-hidden flex items-end">
         <div className="absolute inset-0">
-          <Image src="/images/hero.png" alt="Campaign" fill priority className="object-cover brightness-[0.35] contrast-[1.1]" sizes="100vw" />
+          <Image src="/images/Screenshot 2026-05-09 001059.png" alt="Campaign" fill priority className="object-cover brightness-[0.35] contrast-[1.1]" sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-void)] via-transparent to-transparent opacity-80" />
         </div>
         <LiquidOrb color="rgba(229,56,42,0.5)" size={500} className="bottom-[-120px] right-[-60px]" opacity={0.18} delay={0} duration={14} />
@@ -57,7 +57,7 @@ export default function LookbookPage() {
         <div className="max-w-[1400px] mx-auto px-6 mb-6 relative z-50 pointer-events-none">
           <p className="font-[var(--font-display)] font-bold text-[10px] tracking-[0.3em] uppercase text-[var(--accent-red)]">CAMPAIGN FRAMES</p>
         </div>
-        
+
         <DraggableWorkbench items={products} />
       </section>
 
